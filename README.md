@@ -4,7 +4,7 @@ This is a collection of Doom I/II gameplay footage that has been downsampled to 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
 ## Downloading
-You can either use `download.py` or you can grab it from S3 directly:
+Grab it from the S3 bucket directly:
 ```
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
