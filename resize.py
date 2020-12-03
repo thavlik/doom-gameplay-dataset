@@ -43,6 +43,7 @@ files = sorted([f for f in os.listdir(args.input)
 print(f'Processing {len(files)} files')
 total_in = 0
 total_out = 0
+total_start = time.time()
 for i, file in enumerate(files):
     start = time.time()
     input = os.path.join(args.input, file).replace('\\', '/')
@@ -66,5 +67,6 @@ for i, file in enumerate(files):
     out_size //= 1000*1000
     pct = (1.0 - out_size / in_size) * 100
     print(f'[{i+1}/{len(files)}] Wrote {output} in {delta} seconds ({out_size} MiB, {int(pct)}% reduction)')
+delta = time.time() - total_start
 reduction = int((1.0 - total_out / total_in) * 100)
-print(f'Success, total reduction of {reduction}%')
+print(f'Completed in {delta} seconds, total reduction of {reduction}%')
