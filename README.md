@@ -25,6 +25,8 @@ If you would like to contribute, please open an issue or submit a pull request w
 ## License
 All videos are property of their respective creators. Permission to transform and redistribute was granted in each case. This project makes no claims of ownership to the data.
 
+This project's code is released under MIT / Apache 2.0 dual license, which is extremely permissive.
+
 ## Related Projects
 - [decord](https://github.com/dmlc/decord), for quickly loading frames
 - [thavlik portfolio](https://github.com/thavlik/machine-learning-portfolio)
