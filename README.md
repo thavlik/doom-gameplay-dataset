@@ -11,6 +11,9 @@ cd doom-gameplay-dataset
 aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset .
 ```
 
+## Compiling from Raw
+The code to download the raw videos and compile the dataset is currently being moved over from my portfolio.
+
 ## Contributors
 Gameplay videos are sourced from YouTube with permission. Special thanks to the following creators for their contributions to the community and this dataset - these individuals are the lifeblood of the Doom community:
 - [Timothy Brown](https://www.youtube.com/user/mArt1And00m3r11339)
