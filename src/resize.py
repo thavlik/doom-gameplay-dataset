@@ -4,6 +4,7 @@ import os
 import sys
 import subprocess
 import time
+import glob
 
 parser = argparse.ArgumentParser(
     description='resize videos')
@@ -11,12 +12,12 @@ parser.add_argument('--input',  '-i',
                     dest="input",
                     metavar='INPUT',
                     help='path to dir with mp4 files',
-                    default='E:/doom')
+                    default='/mnt/e/doom')
 parser.add_argument('--output', '-o',
                     dest="output",
                     metavar='OUTPUT',
                     help='output dir',
-                    default='E:/doom-processed')
+                    default='/mnt/e/doom-processed')
 parser.add_argument('--width',
                     dest="width",
                     metavar='WIDTH',
@@ -32,6 +33,11 @@ parser.add_argument('--skip-frames',
                     metavar='SKIP_FRAMES',
                     help='number of frames to skip',
                     default=1)
+parser.add_argument('--segment-time',
+                    dest="segment_time",
+                    metavar='SEGMENT_TIME',
+                    help='max segment length',
+                    default='00:10:00')
 args = parser.parse_args()
 denom = args.skip_frames + 1
 
@@ -45,14 +51,15 @@ total_in = 0
 total_out = 0
 total_start = time.time()
 for i, file in enumerate(files):
+    file = file[:-len('.mp4')]
     start = time.time()
-    input = os.path.join(args.input, file).replace('\\', '/')
+    input = os.path.join(args.input, file).replace('\\', '/') + '.mp4'
     output = os.path.join(args.output, file).replace('\\', '/')
     in_size = os.path.getsize(input)
     total_in += in_size
     in_size //= 1000*1000
     print(f'[{i+1}/{len(files)}] Processing {input} ({in_size} MiB)')
-    cmd = f"ffmpeg -i {input} -s {args.width}x{args.height} -y -c:a copy -an -vf select='not(mod(n\\,{denom})), setpts={1.0/denom}*PTS' {output}"
+    cmd = f"ffmpeg -i {input} -s {args.width}x{args.height} -y -c:a copy -an -vf select='not(mod(n\\,{denom})), setpts={1.0/denom}*PTS' -reset_timestamps 1 -map 0 -segment_time {args.segment_time} -f segment {output}%02d.mp4"
     proc = subprocess.run(
         ['bash', '-c', cmd], capture_output=True)
     if proc.returncode != 0:
@@ -62,11 +69,13 @@ for i, file in enumerate(files):
             msg += ' ' + proc.stderr.decode('unicode_escape')
         raise ValueError(msg)
     delta = time.time() - start
-    out_size = os.path.getsize(output)
+    out_files = glob.glob(output + '*.mp4')
+    out_size = sum(os.path.getsize(f)
+                   for f in out_files)
     total_out += out_size
     out_size //= 1000*1000
     pct = (1.0 - out_size / in_size) * 100
-    print(f'[{i+1}/{len(files)}] Wrote {output} in {delta} seconds ({out_size} MiB, {int(pct)}% reduction)')
+    print(f'[{i+1}/{len(files)}] Wrote {out_files} in {delta} seconds ({out_size} MiB, {int(pct)}% reduction)')
 delta = time.time() - total_start
 reduction = int((1.0 - total_out / total_in) * 100)
 print(f'Completed in {delta} seconds, total reduction of {reduction}%')
