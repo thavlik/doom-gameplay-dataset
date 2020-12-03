@@ -37,7 +37,7 @@ parser.add_argument('--segment-time',
                     dest="segment_time",
                     metavar='SEGMENT_TIME',
                     help='max segment length',
-                    default='00:10:00')
+                    default='00:5:00')
 args = parser.parse_args()
 denom = args.skip_frames + 1
 
@@ -59,7 +59,7 @@ for i, file in enumerate(files):
     total_in += in_size
     in_size //= 1000*1000
     print(f'[{i+1}/{len(files)}] Processing {input} ({in_size} MiB)')
-    cmd = f"ffmpeg -i {input} -s {args.width}x{args.height} -y -c:a copy -an -vf select='not(mod(n\\,{denom})), setpts={1.0/denom}*PTS' -reset_timestamps 1 -map 0 -segment_time {args.segment_time} -f segment {output}%02d.mp4"
+    cmd = f"ffmpeg -i {input} -s {args.width}x{args.height} -y -c:a copy -an -vf select='not(mod(n\\,{denom})), setpts={1.0/denom}*PTS' -reset_timestamps 1 -map 0 -segment_time {args.segment_time} -f segment {output}%03d.mp4"
     proc = subprocess.run(
         ['bash', '-c', cmd], capture_output=True)
     if proc.returncode != 0:

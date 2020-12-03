@@ -1,5 +1,5 @@
 # Doom Gameplay Dataset
-This is a collection of Doom I/II gameplay footage that has been downsampled to 320x240 @ 15fps, for a total size of about 17 Gb. The raw footage is mostly 1080p, totals ~170 Gb, and can only be randomly sampled at 3 frames/sec. The downsampling process allows frames to be loaded at speeds appropriate for machine learning applications.
+This is a collection of Doom I/II gameplay footage that has been downsampled to 320x240 @ 15fps and split into 5 min (18 Mb) segments, for a total size of about 17 Gb. The raw footage is mostly 1080p, totals ~170 Gb, and can only be randomly sampled at 3 frames/sec. The downsampling process allows frames to be loaded at speeds appropriate for machine learning applications.
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
