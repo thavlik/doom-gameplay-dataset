@@ -1,15 +1,62 @@
 # Doom Gameplay Dataset
-This is a collection of Doom I/II gameplay footage that has been downsampled to 320x240 @ 15fps and split into 5 min (18 Mb) segments, for a total size of about 17 Gb. The raw footage is mostly 1080p, totals ~170 Gb, and can only be randomly sampled at 3 frames/sec. The downsampling process allows frames to be loaded at speeds appropriate for machine learning applications.
+This is a collection of Doom I/II gameplay footage that has been preprocessed so that it is appropriate for machine learning purposes.
+
+Sourcing batches of frames from raw 1080p video is a notoriously unwieldy process - a single CPU can rarely seek random frames faster than 3-4 fps. Multiple downsampled resolutions are provided, allowing frames to be loaded at speeds suitable for machine learning applications.
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
+
+## Resolutions
+
+| Resolution      | FPS | Size (GiB) | % Reduction
+| --------------- | --- | ---------- | -----------
+| 320x240         | 15  | 25.8       | 84         
+| 480x320         | 15  | TODO       | TODO
+| 640x480         | 15  | TODO       | TODO
+| 800x600         | 15  | TODO       | TODO
+| 1920x1080       | 30  | 165        | None (raw)
+
 ## Downloading
+
 Grab it from the S3 bucket directly:
 ```
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
-aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset .
+aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset/320x240 .
 ```
+
+The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate.
+
+## How To Use
+There are several existing Python solutions for loading frames from a directory of videos. [decord](https://github.com/dmlc/decord) is currently the most promising, given its narrowly tailored focus of machine learning. Generally, the API entails pointing the loader at a directory containing video files:
+```python
+import os
+import torch
+from decord import VideoLoader, cpu
+
+# Configure decord to output torch.Tensor
+decord.bridge.set_bridge('torch')
+
+width = 320
+height = 240
+dir = f'/data/doom-gameplay-dataset/download/{width}x{height}'
+video_files = [f for f in os.listdir(dir)
+               if f.endswith('.mp4')]
+num_frames = 1 # Likely (but not always) synonymous with batch_size
+batch_shape = (num_frames, width, height, 3)
+vl = VideoLoader(video_files,
+                 ctx=[cpu(0)],
+                 shape=batch_shape,
+                 interval=0,
+                 skip=0,
+                 shuffle=1)
+frame_data, indices = vl.next()
+# `frame_data` contains the decoded frames
+assert type(frame_data) == torch.Tensor
+assert frame_data.shape == batch_shape
+# `indices` is the (video_num, frame_num)
+assert indices.shape == (num_frames, 2)
+``` 
 
 ## Compiling from Raw
 The code to download the raw videos and compile the dataset is currently being moved over from my portfolio.
