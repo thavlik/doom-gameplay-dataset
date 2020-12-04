@@ -23,7 +23,8 @@ The data can be downloaded with the [AWS Command Line Interface](https://aws.ama
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
 # Sync only the folder with the resolution you want
-aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset/320x240 320x240
+# --no-sign-request allows use of awscli without credentials
+aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/320x240 320x240
 ```
 
 The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
