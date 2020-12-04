@@ -5,28 +5,28 @@ Sourcing batches of frames from raw 1080p video is a notoriously unwieldy proces
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
-
 ## Resolutions
 
-| Resolution      | FPS | Size (GiB) | % Reduction
-| --------------- | --- | ---------- | -----------
-| 320x240         | 15  | 25.8       | 84         
-| 480x320         | 15  | TODO       | TODO
-| 640x480         | 15  | TODO       | TODO
-| 800x600         | 15  | TODO       | TODO
-| 1920x1080       | 30  | 165        | None (raw)
+| Resolution      | FPS | Size (GiB) | % Reduction | Download (.zip)
+| --------------- | --- | ---------- | ----------- | --------
+| 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
+| 480x320         | 15  | TODO       | TODO        | TODO
+| 640x480         | 15  | TODO       | TODO        | TODO
+| 800x600         | 15  | TODO       | TODO        | TODO
+| 1920x1080       | 30  | 165        | None (raw)  | TODO
 
-## Downloading
+## S3 Hosting
 
-The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/). Folders in the S3 bucket are named according to the resolution video they contain.
+The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is highly redundant and discouraged.
 
 ```
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
+# Sync only the folder with the resolution you want
 aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset/320x240 320x240
 ```
 
-The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate.
+The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
 
 ## How To Use
 There are several existing Python solutions for loading frames from a directory of videos. [decord](https://github.com/dmlc/decord) is currently the most promising, given its narrowly tailored focus of machine learning. Generally, the API entails pointing the loader at a directory containing video files:
