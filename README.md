@@ -18,11 +18,12 @@ There are no class labels or ground truth; this dataset is primarily intended fo
 
 ## Downloading
 
-Grab it from the S3 bucket directly:
+The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/). Folders in the S3 bucket are named according to the resolution video they contain.
+
 ```
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
-aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset/320x240 .
+aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com s3://doom-gameplay-dataset/320x240 320x240
 ```
 
 The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate.
