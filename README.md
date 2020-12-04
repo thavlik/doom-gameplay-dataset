@@ -36,6 +36,7 @@ import torch
 from decord import VideoLoader, cpu
 
 # Configure decord to output torch.Tensor
+# You can also do this for Tensorflow, etc...
 decord.bridge.set_bridge('torch')
 
 width = 320
