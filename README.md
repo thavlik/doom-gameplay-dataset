@@ -12,7 +12,6 @@ There are no class labels or ground truth; this dataset is primarily intended fo
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
 | 480x320         | 15  | TODO       | TODO        | TODO
 | 640x480         | 15  | TODO       | TODO        | TODO
-| 800x600         | 15  | TODO       | TODO        | TODO
 | 1920x1080       | 30  | 165        | None (raw)  | TODO
 
 ## S3 Hosting
