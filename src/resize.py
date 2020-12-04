@@ -41,6 +41,8 @@ parser.add_argument('--segment-time',
 args = parser.parse_args()
 denom = args.skip_frames + 1
 
+print(f'Output resolution: {args.width}x{args.height} @ {30//denom} fps, {args.segment_time} segments')
+
 if not os.path.exists(args.output):
     os.makedirs(args.output)
 
