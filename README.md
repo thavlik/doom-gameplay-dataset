@@ -60,7 +60,7 @@ assert indices.shape == (num_frames, 2)
 ``` 
 
 ## Compiling from Raw
-The code to download the raw videos and compile the dataset is currently being moved over from my portfolio.
+Check out the `src` folder for the scripts used to download and resize the raw videos. [ffmpeg](https://ffmpeg.org/) does most of the heavy lifting.
 
 ## Contributors
 Gameplay videos are sourced from YouTube with permission. Special thanks to the following creators for their contributions to the community and this dataset - these individuals are the lifeblood of the Doom community:
