@@ -56,7 +56,7 @@ frame_data, indices = vl.next()
 # `frame_data` contains the decoded frames
 assert type(frame_data) == torch.Tensor
 assert frame_data.shape == batch_shape
-# `indices` is the (video_num, frame_num)
+# `indices` is the (video_num, frame_num) for each frame
 assert indices.shape == (num_frames, 2)
 ``` 
 
