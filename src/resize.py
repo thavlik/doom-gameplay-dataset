@@ -41,19 +41,37 @@ parser.add_argument('--segment-time',
 args = parser.parse_args()
 denom = args.skip_frames + 1
 
-print(f'Output resolution: {args.width}x{args.height} @ {30//denom} fps, {args.segment_time} segments')
+print(
+    f'Output resolution: {args.width}x{args.height} @ {30//denom} fps, {args.segment_time} segments')
 
 if not os.path.exists(args.output):
     os.makedirs(args.output)
 
 files = sorted([f for f in os.listdir(args.input)
                 if f.endswith('.mp4')])
+completed_path = os.path.join(args.output, 'completed.txt')
+if os.path.exists(completed_path):
+    with open(completed_path, 'r') as f:
+        completed = [line for line in f]
+else:
+    completed = []
+
+
+def add_completed(file):
+    completed.append(file)
+    with open(completed_path, 'w') as f:
+        f.write(json.dumps(completed))
+
+
 print(f'Processing {len(files)} files')
 total_in = 0
 total_out = 0
 total_start = time.time()
 for i, file in enumerate(files):
     file = file[:-len('.mp4')]
+    if file in completed:
+        print(f'Skipping {file} (already converted)')
+        continue
     start = time.time()
     input = os.path.join(args.input, file).replace('\\', '/') + '.mp4'
     output = os.path.join(args.output, file).replace('\\', '/')
@@ -70,6 +88,7 @@ for i, file in enumerate(files):
         if proc.stderr:
             msg += ' ' + proc.stderr.decode('unicode_escape')
         raise ValueError(msg)
+    add_completed(file)
     delta = time.time() - start
     out_files = glob.glob(output + '*.mp4')
     out_size = sum(os.path.getsize(f)
