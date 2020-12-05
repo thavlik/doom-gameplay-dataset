@@ -77,6 +77,11 @@ Gameplay videos are sourced from YouTube with permission. Special thanks to the 
 
 If you would like to contribute, please open an issue or submit a pull request with links to YouTube videos or playlists. Note: only a small fraction of Doom videos have been added so far. People are encouraged to contribute video lists and will be credited.
 
+## Future Improvements
+As you can see from the thumbnail videos, the resizing process is carried out without regard to the original video's aspect ratio. There are also some frames, usually at the beginnings and ends of videos, that are not Doom gameplay, and should be excluded.
+
+This will be addressed by training a per-frame variational autoencoder, clustering the latent space into a small number of dimensions using t-SNE, and rejecting the clusters unassociated with gameplay. The end result is an additional pass over the videos to determine true start/end times, as well as if any irregularities were encountered during gameplay (e.g. the player encountered a crash to desktop). Some longer videos, such as live streams, may be sliced up to remove segments of non-gameplay.
+
 ## License
 All videos are property of their respective creators. Permission to transform and redistribute was granted in each case. This project makes no claims of ownership to the data.
 
