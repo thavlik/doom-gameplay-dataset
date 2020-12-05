@@ -24,7 +24,7 @@ Custom maps and a few weapon/enemy mods made their way into dataset. Future effo
 
 The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is highly redundant and discouraged.
 
-```
+```bash
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
 # Sync only the folder with the resolution you want
