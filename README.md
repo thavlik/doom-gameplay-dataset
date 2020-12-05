@@ -1,5 +1,6 @@
 # Doom Gameplay Dataset
 ![Example Thumbnails](images/thumbnails.gif)
+
 This is a collection of Doom I/II gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes.
 
 Sourcing batches of frames from raw 1080p video is a notoriously unwieldy process - a single CPU can rarely seek random frames faster than 3-4 fps. Multiple downsampled resolutions are provided, allowing frames to be loaded at speeds suitable for machine learning applications.
