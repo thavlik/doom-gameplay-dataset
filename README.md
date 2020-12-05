@@ -1,7 +1,7 @@
 # Doom Gameplay Dataset
 ![Example Thumbnails](images/thumbnails.gif)
 
-**VERSION 1.0 IS PENDING UPLOAD. THANK YOU FOR YOUR PATIENCE.**
+**UPDATE DEC 12, 2020: VERSION 1.0 @ 320x240 IS RELEASED, 640x480 AND RAW ARE UPLOADING. THANK YOU FOR YOUR PATIENCE.**
 
 This is a collection of Doom I/II gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours (and growing!)
 
