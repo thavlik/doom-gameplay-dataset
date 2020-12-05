@@ -3,7 +3,7 @@
 
 **VERSION 1.0 IS PENDING UPLOAD. THANK YOU FOR YOUR PATIENCE.**
 
-This is a collection of Doom I/II gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours.
+This is a collection of Doom I/II gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours (and growing!)
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
