@@ -7,7 +7,7 @@ This is a collection of Doom I/II gameplay footage that has been preprocessed su
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
-Custom maps and a few weapon/enemy mods made their way into dataset. Future efforts may be directed at "purifying" the data in various ways, such as omitting custom weapons.
+Custom maps and a few weapon/enemy mods made their way into dataset. Future efforts may be directed at "purifying" the data in ways such as omitting these custom weapons.
 
 ## Resolutions
 
