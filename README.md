@@ -14,10 +14,10 @@ Custom maps and a few weapon/enemy mods made their way into dataset. Future effo
 | Resolution      | FPS | Size (GiB) | % Reduction | Download (.zip)
 | --------------- | --- | ---------- | ----------- | --------
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
-| 640x480         | 15  | TODO       | TODO        | TODO
+| 640x480         | 15  | 74.6       | 55          | TODO
 | 1920x1080*      | 30  | 165        | None (raw)  | TODO
 
-\* Most raw videos are at 1080p, but some are at much lower resolutions
+\* Most raw videos are at 1080p/720p but some are at lower resolutions
 
 ## S3 Hosting
 
