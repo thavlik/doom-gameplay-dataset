@@ -141,8 +141,10 @@ with youtube_dl.YoutubeDL({
                 # Just a single video
                 process_video(result, ydl, args.download)
         except:
-            # TODO: catch Too Many Requests and call vpn_util.reconnect()
             print(f'Caught exception: {sys.exc_info()}')
+            if args.vpn:
+                # TODO: catch Too Many Requests and call vpn_util.reconnect()
+                pass
             raise
         write_videos()
         completed.append(line)
