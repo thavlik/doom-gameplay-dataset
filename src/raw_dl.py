@@ -105,7 +105,12 @@ if args.clean:
     sys.exit(0)
 
 with open(args.input, "r") as f:
-    lines = [line.strip() for line in f]
+    lines = []
+    for line in f:
+        line = line.strip()
+        if line == '' or line.startswith('#'):
+            continue
+        lines.append(line)
 
 with youtube_dl.YoutubeDL({
     'verbose': True,
