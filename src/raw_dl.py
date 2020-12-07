@@ -3,6 +3,7 @@ import json
 import youtube_dl
 import os
 import sys
+import vpn_util
 
 parser = argparse.ArgumentParser(
     description='Doom raw video downloader')
@@ -31,7 +32,16 @@ parser.add_argument('--clean',
                     metavar='CLEAN',
                     help='remove missing videos from output records (do not download)',
                     default=False)
+parser.add_argument('--vpn',
+                    dest="vpn",
+                    metavar='VPN',
+                    help='enable vpn',
+                    default=False)
 args = parser.parse_args()
+
+if args.vpn:
+    print('Using VPN...')
+    vpn_util.connect()
 
 if not os.path.exists(args.cache_dir):
     os.makedirs(args.cache_dir)
@@ -85,13 +95,10 @@ def process_video(video, ydl, download):
     if os.path.exists(path):
         print(f'{id} already downloaded')
     elif download:
-        try:
-            ydl.extract_info(
-                f'https://youtube.com/watch?v={id}',
-                download=True,
-            )
-        except:
-            print(f'Failed to download {id}: {sys.exc_info()}')
+        ydl.extract_info(
+            f'https://youtube.com/watch?v={id}',
+            download=True,
+        )
 
 
 if args.clean:
@@ -121,19 +128,22 @@ with youtube_dl.YoutubeDL({
         if line in completed:
             print(f'Skipping {line}')
             continue
-        result = ydl.extract_info(
-            line,
-            download=False,
-        )
-        if 'entries' in result:
-            # It is a playlist
-            for video in result['entries']:
-                process_video(video, ydl, args.download)
-        else:
-            # Just a single video
-            process_video(result, ydl, args.download)
+        try:
+            result = ydl.extract_info(
+                line,
+                download=False,
+            )
+            if 'entries' in result:
+                # It is a playlist
+                for video in result['entries']:
+                    process_video(video, ydl, args.download)
+            else:
+                # Just a single video
+                process_video(result, ydl, args.download)
+        except:
+            # TODO: catch Too Many Requests and call vpn_util.reconnect()
+            print(f'Caught exception: {sys.exc_info()}')
+            raise
         write_videos()
         completed.append(line)
         write_completed()
-
-# TODO: resample videos
