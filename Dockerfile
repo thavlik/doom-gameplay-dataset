@@ -14,4 +14,6 @@ RUN apt-get update \
     && apt-get clean
 COPY requirements.txt .
 RUN pip install -r requirements.txt
+WORKDIR /app
 COPY src src
+COPY scripts scripts
