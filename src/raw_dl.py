@@ -109,6 +109,7 @@ with open(args.input, "r") as f:
     for line in f:
         line = line.strip()
         if line == '' or line.startswith('#'):
+            # Comment or blank line
             continue
         lines.append(line)
 
