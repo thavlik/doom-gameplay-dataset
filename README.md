@@ -90,5 +90,7 @@ All videos are property of their respective creators. Permission to transform an
 This project's code is released under MIT / Apache 2.0 dual license, which is extremely permissive.
 
 ## Related Projects
+- [Quake Gameplay Dataset](https://github.com/thavlik/quake-gameplay-dataset)
 - [decord](https://github.com/dmlc/decord), for quickly loading frames
 - [thavlik portfolio](https://github.com/thavlik/machine-learning-portfolio)
+
