@@ -75,6 +75,7 @@ Gameplay videos are sourced from YouTube with permission. Special thanks to the 
 - [Timothy Brown](https://www.youtube.com/user/mArt1And00m3r11339)
 - [decino](https://www.youtube.com/c/decino)
 - [Zero Master](https://www.youtube.com/channel/UCiVZWY9LmrJFOg3hWGjyBbw)
+- [zigi](https://www.youtube.com/user/fibluzigi)
 
 If you would like to contribute, please open an issue or submit a pull request with links to YouTube videos or playlists. Note: only a small fraction of Doom videos have been added so far. People are encouraged to contribute video lists and will be credited.
 
