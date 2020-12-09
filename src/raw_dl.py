@@ -1,6 +1,7 @@
 import argparse
 import json
 import youtube_dl
+from youtube_dl.utils import DownloadError
 import os
 import sys
 import vpn_util
@@ -142,10 +143,10 @@ with youtube_dl.YoutubeDL({
                 process_video(result, ydl, args.download)
         except:
             print(f'Caught exception: {sys.exc_info()}')
-            if args.vpn:
-                # TODO: catch Too Many Requests and call vpn_util.reconnect()
-                pass
-            raise
+            if sys.exc_info()[0] is DownloadError and args.vpn:
+                vpn_util.reconnect()
+            else:
+                raise
         write_videos()
         completed.append(line)
         write_completed()
