@@ -129,24 +129,29 @@ with youtube_dl.YoutubeDL({
         if line in completed:
             print(f'Skipping {line}')
             continue
-        try:
-            result = ydl.extract_info(
-                line,
-                download=False,
-            )
-            if 'entries' in result:
-                # It is a playlist
-                for video in result['entries']:
-                    process_video(video, ydl, args.download)
-            else:
-                # Just a single video
-                process_video(result, ydl, args.download)
-        except:
-            print(f'Caught exception: {sys.exc_info()}')
-            if sys.exc_info()[0] is DownloadError and args.vpn:
-                vpn_util.reconnect()
-            else:
-                raise
+        retry = True
+        while retry:
+            retry = False
+            try:
+                result = ydl.extract_info(
+                    line,
+                    download=False,
+                )
+                if 'entries' in result:
+                    # It is a playlist
+                    for video in result['entries']:
+                        process_video(video, ydl, args.download)
+                else:
+                    # Just a single video
+                    process_video(result, ydl, args.download)
+            except:
+                print(f'Caught exception: {sys.exc_info()}')
+                if sys.exc_info()[0] is DownloadError and args.vpn:
+                    vpn_util.reconnect()
+                    print(f'Retrying {line}')
+                    retry = True
+                else:
+                    raise
         write_videos()
         completed.append(line)
         write_completed()
