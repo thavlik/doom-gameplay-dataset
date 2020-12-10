@@ -36,13 +36,17 @@ parser.add_argument('--clean',
 parser.add_argument('--vpn',
                     dest="vpn",
                     metavar='VPN',
-                    help='enable vpn',
-                    default=False)
+                    help=f'name of vpn driver (options are {vpn_util.vpns})',
+                    default=None)
 args = parser.parse_args()
 
-if args.vpn:
-    print('Using VPN...')
-    vpn_util.connect()
+if args.vpn != None:
+    print(f'Using {args.vpn}')
+    vpn = vpn_util.get_vpn(args.vpn)
+else:
+    print('Warning: not using VPN. You are likely '
+          'to be blocked by YouTube at some point.')
+    vpn = None
 
 if not os.path.exists(args.cache_dir):
     os.makedirs(args.cache_dir)
@@ -146,8 +150,8 @@ with youtube_dl.YoutubeDL({
                     process_video(result, ydl, args.download)
             except:
                 print(f'Caught exception: {sys.exc_info()}')
-                if sys.exc_info()[0] is DownloadError and args.vpn:
-                    vpn_util.reconnect()
+                if sys.exc_info()[0] is DownloadError and vpn != None:
+                    vpn.reconnect()
                     print(f'Retrying {line}')
                     retry = True
                 else:
