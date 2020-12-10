@@ -4,7 +4,7 @@ import youtube_dl
 from youtube_dl.utils import DownloadError
 import os
 import sys
-import vpn_util
+from vpn import vpns, get_vpn
 
 parser = argparse.ArgumentParser(
     description='Doom raw video downloader')
@@ -36,13 +36,13 @@ parser.add_argument('--clean',
 parser.add_argument('--vpn',
                     dest="vpn",
                     metavar='VPN',
-                    help=f'name of vpn driver (options are {vpn_util.vpns})',
+                    help=f'name of vpn driver (options are {vpns.keys()})',
                     default=None)
 args = parser.parse_args()
 
 if args.vpn != None:
     print(f'Using {args.vpn}')
-    vpn = vpn_util.get_vpn(args.vpn)
+    vpn = get_vpn(args.vpn)
 else:
     print('Warning: not using VPN. You are likely '
           'to be blocked by YouTube at some point.')
@@ -154,6 +154,7 @@ with youtube_dl.YoutubeDL({
                     vpn.reconnect()
                     print(f'Retrying {line}')
                     retry = True
+                    continue
                 else:
                     raise
         write_videos()
