@@ -1,7 +1,7 @@
 # Doom Gameplay Dataset
 ![Example Thumbnails](images/thumbnails.gif)
 
-**UPDATE DEC 12, 2020: VERSION 1.0 @ 320x240 IS RELEASED, 640x480 AND RAW ARE UPLOADING. THANK YOU FOR YOUR PATIENCE.**
+**UPDATE DEC 9, 2020: VERSION 1.0 IS RELEASED**
 
 This is a collection of Doom I/II gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours (and growing!)
 
@@ -14,22 +14,25 @@ Custom maps and a few weapon/enemy mods made their way into dataset. Future effo
 | Resolution      | FPS | Size (GiB) | % Reduction | Download (.zip)
 | --------------- | --- | ---------- | ----------- | --------
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
-| 640x480         | 15  | 74.6       | 55          | TODO
-| 1920x1080*      | 30  | 165        | None (raw)  | TODO
+| 640x480         | 15  | 74.6       | 55          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/640x480.zip)
+| Source*         | 30  | 165        | None (raw)  | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/raw.zip)
 
 \* Most raw videos are at 1080p/720p but some are at lower resolutions
 
 Note: the .zip files provide almost no compression, and are provided only for convenience
 
 ## S3 Hosting
-
 The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is highly redundant and discouraged. `s3 sync` is the recommended download method for slow or interruptible connections, as it can stopped and resumed without issue.
 
 ```bash
 mkdir doom-gameplay-dataset
 cd doom-gameplay-dataset
-# Sync only the folder with the resolution you want
+
+# The resolutions are available as both folders and zip files
 # --no-sign-request allows use of awscli without credentials
+aws s3 ls --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/
+
+# Sync only the folder with the resolution you want
 aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/320x240 320x240
 ```
 
