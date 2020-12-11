@@ -63,7 +63,7 @@ def add_completed(file):
         f.write(json.dumps(completed))
 
 
-print(f'Processing {len(files)} files')
+print(f'Processing {len(files)} files ({len(completed)} already completed)')
 total_in = 0
 total_out = 0
 total_start = time.time()
