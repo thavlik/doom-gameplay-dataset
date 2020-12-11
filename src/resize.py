@@ -70,7 +70,7 @@ total_start = time.time()
 for i, file in enumerate(files):
     file = file[:-len('.mp4')]
     if file in completed:
-        print(f'Skipping {file} (already converted)')
+        print(f'[{i+1}/{len(files)}] Skipping {file} (already converted)')
         continue
     start = time.time()
     input = os.path.join(args.input, file).replace('\\', '/') + '.mp4'
