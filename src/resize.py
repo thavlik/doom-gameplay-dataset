@@ -77,7 +77,7 @@ for i, file in enumerate(files):
     output = os.path.join(args.output, file).replace('\\', '/')
     in_size = os.path.getsize(input)
     total_in += in_size
-    in_size //= 1000*1000
+    in_size /= 1000*1000
     print(f'[{i+1}/{len(files)}] Processing {input} ({in_size} MiB)')
     cmd = f"ffmpeg -i {input} -s {args.width}x{args.height} -y -c:a copy -an -vf select='not(mod(n\\,{denom})), setpts={1.0/denom}*PTS' -reset_timestamps 1 -map 0 -segment_time {args.segment_time} -f segment {output}%03d.mp4"
     proc = subprocess.run(
@@ -91,10 +91,10 @@ for i, file in enumerate(files):
     add_completed(file)
     delta = time.time() - start
     out_files = glob.glob(output + '*.mp4')
-    out_size = sum(os.path.getsize(f)
-                   for f in out_files)
+    out_size = sum([os.path.getsize(f)
+                    for f in out_files])
     total_out += out_size
-    out_size //= 1000*1000
+    out_size /= 1000*1000
     pct = (1.0 - out_size / in_size) * 100
     print(f'[{i+1}/{len(files)}] Wrote {out_files} in {delta} seconds ({out_size} MiB, {int(pct)}% reduction)')
 delta = time.time() - total_start
