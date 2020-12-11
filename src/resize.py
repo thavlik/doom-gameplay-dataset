@@ -52,7 +52,7 @@ files = sorted([f for f in os.listdir(args.input)
 completed_path = os.path.join(args.output, 'completed.txt')
 if os.path.exists(completed_path):
     with open(completed_path, 'r') as f:
-        completed = [line for line in f]
+        completed = json.loads(f.read())
 else:
     completed = []
 
