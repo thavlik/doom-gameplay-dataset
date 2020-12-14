@@ -62,7 +62,6 @@ def add_completed(file):
     with open(completed_path, 'w') as f:
         f.write(json.dumps(completed))
 
-
 print(f'Processing {len(files)} files ({len(completed)} already completed)')
 total_in = 0
 total_out = 0
@@ -72,6 +71,7 @@ for i, file in enumerate(files):
     if file in completed:
         print(f'[{i+1}/{len(files)}] Skipping {file} (already converted)')
         continue
+    # TODO: omit videos that are lower resolution than desired output
     start = time.time()
     input = os.path.join(args.input, file).replace('\\', '/') + '.mp4'
     output = os.path.join(args.output, file).replace('\\', '/')
