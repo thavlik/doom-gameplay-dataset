@@ -8,7 +8,7 @@ import subprocess
 
 bridge.set_bridge('torch')
 
-input = '/mnt/e/320x240'
+input = '/mnt/disk/640x480'
 rows = 4
 cols = 4
 fps = 12
@@ -36,7 +36,7 @@ for frame in range(num_frames):
         complete_frame.append(items)
     complete_frame = np.concatenate(complete_frame, axis=0)
     img = Image.fromarray(complete_frame)
-    img = img.resize((img.width//2, img.height//2))
+    img = img.resize((img.width//4, img.height//4))
     out_path = 'frame_{0:04}.png'.format(frame)
     img.save(out_path)
     print(f'Wrote {out_path}')
