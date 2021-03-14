@@ -7,7 +7,7 @@ This is a collection of Doom I/II gameplay footage that has been preprocessed su
 
 There are no class labels or ground truth; this dataset is primarily intended for unsupervised learning.
 
-Custom maps and a few weapon/enemy mods made their way into dataset. Future efforts may be directed at "purifying" the data in ways such as omitting these custom weapons.
+A few videos containing weapon/enemy mods made their way into dataset. Future efforts may be directed at "purifying" the data in ways such as omitting these custom weapons.
 
 ## Resolutions
 
@@ -15,7 +15,7 @@ Custom maps and a few weapon/enemy mods made their way into dataset. Future effo
 | --------------- | --- | ---------- | ----------- | --------
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
 | 640x480         | 15  | 74.6       | 55          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/640x480.zip)
-| Source*         | 30  | 165        | None (raw)  | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/raw.zip)
+| Source*         | 30  | 165        | 0 (raw)     | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/raw.zip)
 
 \* Most raw videos are at 1080p/720p but some are at lower resolutions
 
