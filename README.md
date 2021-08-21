@@ -54,7 +54,7 @@ decord.bridge.set_bridge('torch')
 
 width = 320
 height = 240
-dir = f'/data/videos'
+dir = f'/data/doom-gameplay-dataset/{width}x{height}'
 video_files = [os.path.join(dir, f)
                for f in os.listdir(dir)
                if f.endswith('.mp4')]
