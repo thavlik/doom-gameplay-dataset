@@ -84,7 +84,7 @@ Gameplay videos are sourced from YouTube with permission. Special thanks to the 
 - [Zero Master](https://www.youtube.com/channel/UCiVZWY9LmrJFOg3hWGjyBbw)
 - [zigi](https://www.youtube.com/user/fibluzigi)
 
-If you would like to contribute, please open an issue or submit a pull request with links to YouTube videos or playlists. Note: only a small fraction of Doom videos have been added so far. People are encouraged to contribute video lists and will be credited.
+If you would like to contribute, please open an issue or submit a pull request with links to YouTube videos or playlists. The full list of videos and playlists is [`raw/links.txt`](raw/links.txt). Note that only a small fraction of Doom videos have been added so far. People are encouraged to contribute video lists and will be credited.
 
 ## Future Improvements
 As you can see from the thumbnail videos, the resizing process is carried out without regard to the original video's aspect ratio. There are also some frames, usually at the beginnings and ends of videos, that are not Doom gameplay, and should be excluded.
