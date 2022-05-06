@@ -94,7 +94,7 @@ This will be addressed by training a per-frame variational autoencoder, clusteri
 ## License
 All videos are property of their respective creators. Permission to transform and redistribute was granted in each case. This project makes no claims of ownership to the data.
 
-This project's code is released under [MIT](LICENSE-MIT) / [Apache 2.0](LICENSE-Apache) 2.0 dual license, which is extremely permissive.
+This project's code is released under [MIT](LICENSE-MIT) / [Apache 2.0](LICENSE-Apache) dual license, which is extremely permissive.
 
 ## Related Projects
 - [Quake Gameplay Dataset](https://github.com/thavlik/quake-gameplay-dataset)
