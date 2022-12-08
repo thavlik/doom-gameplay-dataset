@@ -91,6 +91,14 @@ As you can see from the thumbnail videos, the resizing process is carried out wi
 
 This will be addressed by training a per-frame variational autoencoder, clustering the latent space into a small number of dimensions using t-SNE, and rejecting the clusters unassociated with gameplay. The end result is an additional pass over the videos to determine true start/end times, as well as if any irregularities were encountered during gameplay (e.g. the player encountered a crash to desktop). Some longer videos, such as live streams, may be sliced up to remove segments of non-gameplay.
 
+## Donate
+Over the years, hosting costs have amounted to hundreds of dollars. Crypto donations are greatly appreciated.
+
+BTC (Bitcoin): 14uBA4iNCihkY1ukUdk4U5TWr9m57wCEQ8
+XMR (Monero): 43WCJHWSba5LSWCwmAMz6fTauR3kyKPxv3kK9BMiDAox6uxeAnWZQqDa6sBW8oGA8uFgEVuaQjSEo1c4uACGHKhKFpxYZNT
+ADA (Cardano): addr1q8c5xzhmx6a9gtvcf4mst86ntv9y4q7plgtge387yazgxwzlklp4lkgtzk6z2fwpaww3jqmczz0hltaxsc09zdxz7mcsucsqqk
+ETH (Ethereum): 0x316f753d58D91640E5Cd3010F821e1CD464e2d3C
+
 ## License
 All videos are property of their respective creators. Permission to transform and redistribute was granted in each case. This project makes no claims of ownership to the data.
 
