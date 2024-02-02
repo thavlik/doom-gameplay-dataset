@@ -5,7 +5,7 @@
 [<img src="https://img.shields.io/badge/License-MIT-lightblue.svg">](./LICENSE-MIT)
 [<img src="https://img.shields.io/badge/Language-python-FFD43B.svg">](https://www.python.org/)
 
-**UPDATE DEC 9, 2020: VERSION 1.0 IS RELEASED**
+> **UPDATE DEC 9, 2020: VERSION 1.0 IS RELEASED**
 
 This is a collection of [Doom 1 & 2](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours (and growing!)
 
