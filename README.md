@@ -46,7 +46,7 @@ $ aws s3 sync \
     320x240
 ```
 
-The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
+The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous with respect to redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
 
 **If your goal is to copy the entire bucket for the purpose of hosting a duplicate copy for others to use, by all means download the entire bucket.**
 
