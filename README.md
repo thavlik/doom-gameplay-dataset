@@ -13,8 +13,7 @@ There are no class labels or ground truth; this dataset is primarily intended fo
 
 A few videos containing weapon/enemy mods made their way into dataset. Future efforts may be directed at "purifying" the data in ways such as omitting these custom weapons.
 
-## Resolutions
-
+## Download Links
 | Resolution      | FPS | Size (GiB) | % Reduction | Download (.zip)
 | --------------- | --- | ---------- | ----------- | --------
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
