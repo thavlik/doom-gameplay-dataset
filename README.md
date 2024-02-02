@@ -1,5 +1,9 @@
-# Doom Gameplay Dataset
 ![Example Thumbnails](images/thumbnails.gif)
+# Doom Gameplay Dataset
+[<img src="https://img.shields.io/badge/maintenance%20status-actively%20developed-brightgreen">](https://github.com/thavlik/doom-gameplay-dataset)
+[<img src="https://img.shields.io/badge/License-Apache_2.0-orange.svg">](./LICENSE-Apache)
+[<img src="https://img.shields.io/badge/License-MIT-lightblue.svg">](./LICENSE-MIT)
+[<img src="https://img.shields.io/badge/Language-python-FFD43B.svg">](https://www.python.org/)
 
 **UPDATE DEC 9, 2020: VERSION 1.0 IS RELEASED**
 
