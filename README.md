@@ -20,7 +20,7 @@ A few videos containing weapon/enemy mods made their way into dataset. Future ef
 | 640x480         | 15  | 74.6       | 55          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/640x480.zip)
 | Source*         | 30  | 165        | 0 (raw)     | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/raw.zip)
 
-\* Most raw videos are at 1080p/720p but some are at lower resolutions
+> \* Most raw videos are at 1080p/720p but some are at lower resolutions
 
 Note: the .zip files provide almost no compression, and are provided only for convenience
 
