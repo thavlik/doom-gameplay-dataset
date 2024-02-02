@@ -28,15 +28,15 @@ Note: the .zip files provide almost no compression, and are provided only for co
 The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is highly redundant and discouraged. `s3 sync` is the recommended download method for slow or interruptible connections, as it can stopped and resumed without issue.
 
 ```bash
-mkdir doom-gameplay-dataset
-cd doom-gameplay-dataset
+$ mkdir doom-gameplay-dataset
+$ cd doom-gameplay-dataset
 
 # The resolutions are available as both folders and zip files
 # --no-sign-request allows use of awscli without credentials
-aws s3 ls --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/
+$ aws s3 ls --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/
 
 # Sync only the folder with the resolution you want
-aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/320x240 320x240
+$ aws s3 sync --endpoint https://nyc3.digitaloceanspaces.com --no-sign-request s3://doom-gameplay-dataset/320x240 320x240
 ```
 
 The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous w.r.t. redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
