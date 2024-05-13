@@ -5,7 +5,7 @@
 [<img src="https://img.shields.io/badge/License-Apache_2.0-orange.svg">](./LICENSE-Apache)
 [<img src="https://img.shields.io/badge/License-MIT-lightblue.svg">](./LICENSE-MIT)
 
-> **UPDATE DEC 9, 2020: VERSION 1.0 IS RELEASED**
+> **UPDATE MAY 13, 2024: Hosting costs for multiresolution are unsustainably expensive. Moving forward, only the resized videos will be available for download.**
 
 This is a collection of [Doom 1 & 2](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) gameplay footage that has been preprocessed such that it is appropriate for machine learning purposes. Current estimates place the total duration at around 170 hours (and growing!)
 
@@ -18,14 +18,14 @@ A few videos containing weapon/enemy mods made their way into dataset. Future ef
 | --------------- | --- | ---------- | ----------- | --------
 | 320x240         | 15  | 25.8       | 84          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/320x240.zip)
 | 640x480         | 15  | 74.6       | 55          | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/640x480.zip)
-| Source*         | 30  | 165        | 0 (raw)     | [Link](https://doom-gameplay-dataset.nyc3.digitaloceanspaces.com/raw.zip)
+| Source*         | 30  | 165        | 0 (raw)     | (Unavailable)
 
 > \* Most raw videos are at 1080p/720p but some are at lower resolutions
 
 Note: the .zip files provide almost no compression, and are provided only for convenience
 
 ## S3 Hosting
-The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is highly redundant and discouraged. `s3 sync` is the recommended download method for slow or interruptible connections, as it can stopped and resumed without issue.
+The data can be downloaded with the [AWS Command Line Interface](https://aws.amazon.com/cli/) or compatible S3 API. Folders in the S3 bucket are named according to the resolution video they contain. Because the bucket contains all resolutions in both .mp4 and .zip format, syncing the entire bucket is redundant and discouraged. `s3 sync` is the recommended download method for slow or interruptible connections, as it can stopped and resumed without issue.
 
 ```bash
 $ mkdir doom-gameplay-dataset
@@ -45,10 +45,6 @@ $ aws s3 sync \
     s3://doom-gameplay-dataset/320x240 \
     320x240
 ```
-
-The hosting costs for this project are negligible, but an inconsiderately written download script could easily change this. I kindly ask that you be courteous with redundant downloads, and cache locally where appropriate. If necessary, I will delist the .mp4 files from the bucket and only make the zip files available.
-
-**If your goal is to copy the entire bucket for the purpose of hosting a duplicate copy for others to use, by all means download the entire bucket.**
 
 ## How To Use
 There are several existing Python solutions for loading frames from a directory of videos. [decord](https://github.com/dmlc/decord) is currently the most promising, given its narrowly tailored focus of machine learning. Generally, the API entails pointing the loader at a directory containing video files:
